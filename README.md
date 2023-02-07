@@ -1,13 +1,17 @@
-# A simple implementation of a PDF generation with HTML.
+# Uma implementação simples de uma geração de PDF com HTML.
 
-This repo shows a application thats generate and send back a buffer of PDF.
-The app uses handlebars to make a HTML from template.
+Este repositório mostra um aplicativo que gera e envia de volta um buffer de PDF.
+O aplicativo usa `handlebars` para criar um HTML a partir do `template`.
 
 #### How to use
 
 1. Clone this repo
 
 2. Download the dependencies
+
+```
+nvm use
+```
 
 ```
 npm install
@@ -690,3 +694,5 @@ Para exibir o template do relatório sem as informações:
         <code> GET - http://localhost:3333/ </code>
     </summary>
 </details>
+
+Projeto criado para fins de estudos com base no repositório: https://github.com/droderuan/node-pdf-generator
