@@ -34,3 +34,659 @@ You can change the Model and the template, and I think it will works properly.
       -webkit-print-color-adjust: exact;
     }
 ```
+
+## Rotas
+
+Cadastro de nova ordem de produção:
+
+<details>
+    <summary>
+        <code> POST - http://localhost:3333/ </code>
+    </summary>
+
+Requisição:
+```json
+{
+	"company_name": "Quiosque Solutions",
+	"phone": "+55 (88) 99102-0000",
+	"city": "Cianorte",
+	"state": "PR",
+	"address": "Avenida Santa Catarina, 1200",
+	"total": "R$ 200,00",
+	"orders": [
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		},
+		{
+			"name": "Rodamão",
+			"shape": "Retangular",
+			"unit": "cm",
+			"measures": {
+				"displayMeasures": "250x20"
+			},
+			"surfaceFinish": "Polido",
+			"edgeFinishing": "Boleado Duplo",
+			"edgeFinishingPosition": [
+				{
+					"position": "1",
+					"name": "topo"
+				},
+				{
+					"position": "2",
+					"name": "Direita"
+				}
+			],
+			"quantity": "5",
+			"price": "100",
+			"stoneType": {
+				"type": "marble",
+				"stone": "Marorom Emperador"
+			}
+		}
+	]
+}
+```
+</details>
+
+Para exibir o template do relatório sem as informações:
+
+<details>
+    <summary>
+        <code> GET - http://localhost:3333/ </code>
+    </summary>
+</details>
