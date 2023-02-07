@@ -1,7 +1,7 @@
 # Uma implementação simples de uma geração de PDF com HTML.
 
-Este repositório mostra um aplicativo que gera e envia de volta um buffer de PDF.
-O aplicativo usa `handlebars` para criar um HTML a partir do `template`.
+- Este repositório mostra um aplicativo que gera e envia de volta um buffer de PDF.
+- O aplicativo usa `handlebars` para criar um HTML a partir do `template`.
 
 #### How to use
 
