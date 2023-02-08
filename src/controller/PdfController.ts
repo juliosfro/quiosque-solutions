@@ -34,12 +34,14 @@ export default class PdfController {
                 total: `${total?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`,
             };
 
-            const templatePath = path.resolve(__dirname, '..', 'template', 'pdf.hbs');
+            const templatePath = path.resolve(__dirname, '..', 'templates', 'layouts', 'pdf.hbs');
             const parsedTemplate = await handlebarsCompileToHtml(templatePath);
             const parsedHTML = parsedTemplate(produtos);
 
             const fileName = 'relatorio-de-ordens-de-producao.pdf';
-            const pdfBuffer = await createPdf(parsedHTML, options);
+            const stylePath = path.resolve(__dirname, '..', '..', 'public', 'css', 'styles.css');
+            
+            const pdfBuffer = await createPdf(parsedHTML, options, stylePath);
             response.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
             response
                 .type('pdf')

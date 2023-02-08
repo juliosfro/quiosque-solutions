@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Ordens de Produção</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <header>
+    <aside id="left">
+      <span>{{company_name}}</span>
+    </aside>
+    <aside id="right">
+      <p>Telefone: {{phone}}</p>
+      <p>{{state}} - {{city}} <br>
+        {{address}}</p>
+    </aside>
+  </header>
+
+  <div class="content">
+    <div class="table-content">
+      <table class="list">
+        <thead>
+          <tr>
+            <th>Quant.</th>
+            <th>Nome</th>
+            <th>Pedra</th>
+            <th>Formato</th>
+            <th>Medidas</th>
+            <th>Acab. Superfície</th>
+            <th>Acab. Bordas</th>
+            <th>Posição Acab. Bordas</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orders}}
+          <tr>
+            <td>{{quantity}}x</td>
+            <td>{{name}}</td>
+            <td>{{stoneType.stone}}</td>
+            <td>{{shape}}</td>
+            <td>{{measures.displayMeasures}}{{unit}}</td>
+            <td>{{surfaceFinish}}</td>
+            <td>{{edgeFinishing}}</td>
+            <td>
+              {{#each edgeFinishingPosition }}
+              {{name}}
+              {{/each}}
+            </td>
+            <td>{{price}}</td>
+          </tr>
+          {{/each}}
+          <tr id="last-tr">
+            <td colspan="9">
+              Total: <strong>{{total}}</strong>
+          </tr>
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
