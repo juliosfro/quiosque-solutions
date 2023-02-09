@@ -27,12 +27,12 @@ export default class PdfController {
 
             const parsedHeader = await registerPartialAndCompileToHtml('header', partialHeaderPath);
             const parsedHeaderHtml = parsedHeader(produtos);
+            const headerHtml = await createHtmlContentWithStyle(parsedHeaderHtml, templateStylePath);
 
             const parsedTemplate = await handlebarsCompileToHtml(templatePath);
             const parsedTemplateHtml = parsedTemplate(produtos);
 
             const fileName = 'relatorio-de-ordens-de-producao.pdf';
-            const headerHtml = await createHtmlContentWithStyle(parsedHeaderHtml, templateStylePath);
 
             const options: PDFOptions = {
                 format: 'A4',
@@ -55,8 +55,7 @@ export default class PdfController {
                 .status(201)
                 .send(pdfBuffer);
         } catch (error: any) {
-            const options = {};
-            const pdfBuffer = await errorPdfHtmlTemplate(error.message, options);
+            const pdfBuffer = await errorPdfHtmlTemplate(error.message);
             response
                 .type('pdf')
                 .status(422)

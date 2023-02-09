@@ -25,7 +25,7 @@ export const createHtmlContentWithStyle = async (parsedHTML: string, stylePath: 
     return pageContentHtml;
 };
 
-export const errorPdfHtmlTemplate = async (error: string, options: PDFOptions): Promise<Buffer> => {
+export const errorPdfHtmlTemplate = async (error: string, options?: PDFOptions): Promise<Buffer> => {
 
     const browser = await puppeteer.launch();
     const pageContent = await browser.newPage();
