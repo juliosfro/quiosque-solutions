@@ -27,16 +27,34 @@ export const createHtmlContentWithStyle = async (parsedHTML: string, stylePath: 
 
 export const errorPdfHtmlTemplate = async (error: string, options?: PDFOptions): Promise<Buffer> => {
 
+    const defaultOptions: PDFOptions = {
+        format: 'A4',
+        displayHeaderFooter: true,
+        printBackground: false,
+        headerTemplate: '',
+        footerTemplate: '',
+        margin: {
+            bottom: '30px',
+            top: '30px',
+            right: '30px',
+            left: '30px',
+        },
+    };
+
+    const optionsError = options || defaultOptions;
+
     const browser = await puppeteer.launch();
     const pageContent = await browser.newPage();
     await pageContent.emulateMediaType('screen');
-    
-    const content = `
-        <h2>Ocorreu um erro ao exibir o documento PDF.</h2>
-        Error message: ${error}`;
+
+    const content = 
+    `<div>
+       <h1 style="text-align:center;">Ocorreu um erro ao exibir o documento PDF.</h1>
+       <p style="font-size: 18px;">Error message: ${error}</p>
+    </div`;
     
     await pageContent.setContent(content);
-    const pdfBuffer = await pageContent.pdf(options);
+    const pdfBuffer = await pageContent.pdf(optionsError);
     await browser.close();
     return pdfBuffer;
 };
