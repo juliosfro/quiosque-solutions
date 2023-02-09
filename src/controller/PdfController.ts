@@ -23,22 +23,22 @@ export default class PdfController {
 
             const templatePath = path.resolve(__dirname, '..', 'templates', 'layouts', 'relatorio-ordens-producao.hbs');
             const partialHeaderPath = path.resolve(__dirname, '..', 'templates', 'layouts', 'header.hbs');
+            const templateStylePath = path.resolve(__dirname, '..', '..', 'public', 'css', 'styles.css');
 
             const parsedHeader = await registerPartialAndCompileToHtml('header', partialHeaderPath);
-            const headerParsedHTML = parsedHeader(produtos);
+            const parsedHeaderHtml = parsedHeader(produtos);
 
             const parsedTemplate = await handlebarsCompileToHtml(templatePath);
-            const parsedHTML = parsedTemplate(produtos);
+            const parsedTemplateHtml = parsedTemplate(produtos);
 
             const fileName = 'relatorio-de-ordens-de-producao.pdf';
-            const stylePath = path.resolve(__dirname, '..', '..', 'public', 'css', 'styles.css');
-            const header = await createHtmlContentWithStyle(headerParsedHTML, stylePath);
+            const headerHtml = await createHtmlContentWithStyle(parsedHeaderHtml, templateStylePath);
 
             const options: PDFOptions = {
                 format: 'A4',
                 displayHeaderFooter: true,
                 printBackground: false,
-                headerTemplate: header,
+                headerTemplate: headerHtml,
                 footerTemplate: '',
                 margin: {
                     bottom: '75px',
@@ -48,7 +48,7 @@ export default class PdfController {
                 },
             };
 
-            const pdfBuffer = await createPdfBuffer(parsedHTML, options, stylePath);
+            const pdfBuffer = await createPdfBuffer(parsedTemplateHtml, options, templateStylePath);
             response.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
             response
                 .type('pdf')
