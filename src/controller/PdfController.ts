@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import path from 'path';
 import { PDFOptions } from 'puppeteer';
 import { handlebarsCompileToHtml, registerPartialAndCompileToHtml } from '../helpers/handlebars-helper';
-import { createPdf, errorPdfHtmlTemplate } from '../helpers/puppeteer-helper';
+import { createPdfBuffer, createHtmlContentWithStyle, errorPdfHtmlTemplate } from '../helpers/puppeteer-helper';
 
 import Budget from '../model/budget';
 
@@ -25,13 +25,14 @@ export default class PdfController {
             const partialHeaderPath = path.resolve(__dirname, '..', 'templates', 'layouts', 'header.hbs');
 
             const parsedHeader = await registerPartialAndCompileToHtml('header', partialHeaderPath);
-            const header = parsedHeader(produtos);
+            const headerParsedHTML = parsedHeader(produtos);
 
             const parsedTemplate = await handlebarsCompileToHtml(templatePath);
             const parsedHTML = parsedTemplate(produtos);
 
             const fileName = 'relatorio-de-ordens-de-producao.pdf';
             const stylePath = path.resolve(__dirname, '..', '..', 'public', 'css', 'styles.css');
+            const header = await createHtmlContentWithStyle(headerParsedHTML, stylePath);
 
             const options: PDFOptions = {
                 format: 'A4',
@@ -47,7 +48,7 @@ export default class PdfController {
                 },
             };
 
-            const pdfBuffer = await createPdf(parsedHTML, options, stylePath);
+            const pdfBuffer = await createPdfBuffer(parsedHTML, options, stylePath);
             response.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
             response
                 .type('pdf')

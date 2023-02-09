@@ -10,7 +10,7 @@ export const handlebarsCompileToHtml = async (templatePath: string): Promise<Han
     return handlebars.compile(templateFile);
 };
 
-export const registerPartialAndCompileToHtml = async (partialName: string, templatePath: string,): Promise<any> => {
+export const registerPartialAndCompileToHtml = async (partialName: string, templatePath: string,): Promise<HandlebarsTemplateDelegate> => {
     const templateFile = await fs.promises.readFile(templatePath, {
         encoding: 'utf-8',
     });

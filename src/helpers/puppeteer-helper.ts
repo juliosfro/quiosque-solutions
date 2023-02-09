@@ -1,6 +1,6 @@
 import puppeteer, { PDFOptions } from 'puppeteer';
 
-export const createPdf = async (parsedHTML: string, options: PDFOptions, stylePath: string): Promise<Buffer> => {
+export const createPdfBuffer = async (parsedHTML: string, options: PDFOptions, stylePath: string): Promise<Buffer> => {
 
     const browser = await puppeteer.launch();
     const pageContent = await browser.newPage();
@@ -11,6 +11,18 @@ export const createPdf = async (parsedHTML: string, options: PDFOptions, stylePa
     const pdfBuffer = await pageContent.pdf(options);
     await browser.close();
     return pdfBuffer;
+};
+
+export const createHtmlContentWithStyle = async (parsedHTML: string, stylePath: string): Promise<string> => {
+   
+    const browser = await puppeteer.launch();
+    const pageContent = await browser.newPage();
+    await pageContent.setContent(parsedHTML);
+    await pageContent.emulateMediaType('screen');
+    await pageContent.addStyleTag({ path: stylePath });
+    const pageContentHtml = await pageContent.content();
+    await browser.close();
+    return pageContentHtml;
 };
 
 export const errorPdfHtmlTemplate = async (error: string, options: PDFOptions): Promise<Buffer> => {
@@ -24,10 +36,7 @@ export const errorPdfHtmlTemplate = async (error: string, options: PDFOptions): 
         Error message: ${error}`;
     
     await pageContent.setContent(content);
-
     const pdfBuffer = await pageContent.pdf(options);
-
     await browser.close();
-
     return pdfBuffer;
 };
