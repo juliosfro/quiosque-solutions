@@ -1,24 +1,11 @@
 import { Request, Response } from 'express';
 import path from 'path';
 import { PDFOptions } from 'puppeteer';
-import { handlebarsCompileToHtml } from '../helpers/handlebars-helper';
+import { handlebarsCompileToHtml, registerPartialAndCompileToHtml } from '../helpers/handlebars-helper';
 import { createPdf, errorPdfHtmlTemplate } from '../helpers/puppeteer-helper';
 
 import Budget from '../model/budget';
 
-const options: PDFOptions = {
-    format: 'A4',
-    displayHeaderFooter: true,
-    printBackground: false,
-    headerTemplate: '',
-    footerTemplate: '',
-    margin: {
-        bottom: '50px',
-        top: '50px',
-        right: '30px',
-        left: '30px',
-    },
-};
 
 export default class PdfController {
     public async create(request: Request, response: Response): Promise<any> {
@@ -34,13 +21,32 @@ export default class PdfController {
                 total: `${total?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`,
             };
 
-            const templatePath = path.resolve(__dirname, '..', 'templates', 'layouts', 'pdf.hbs');
+            const templatePath = path.resolve(__dirname, '..', 'templates', 'layouts', 'relatorio-ordens-producao.hbs');
+            const partialHeaderPath = path.resolve(__dirname, '..', 'templates', 'layouts', 'header.hbs');
+
+            const parsedHeader = await registerPartialAndCompileToHtml('header', partialHeaderPath);
+            const header = parsedHeader(produtos);
+
             const parsedTemplate = await handlebarsCompileToHtml(templatePath);
             const parsedHTML = parsedTemplate(produtos);
 
             const fileName = 'relatorio-de-ordens-de-producao.pdf';
             const stylePath = path.resolve(__dirname, '..', '..', 'public', 'css', 'styles.css');
-            
+
+            const options: PDFOptions = {
+                format: 'A4',
+                displayHeaderFooter: true,
+                printBackground: false,
+                headerTemplate: header,
+                footerTemplate: '',
+                margin: {
+                    bottom: '75px',
+                    top: '195px',
+                    right: '5px',
+                    left: '5px',
+                },
+            };
+
             const pdfBuffer = await createPdf(parsedHTML, options, stylePath);
             response.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
             response
@@ -48,6 +54,7 @@ export default class PdfController {
                 .status(201)
                 .send(pdfBuffer);
         } catch (error: any) {
+            const options = {};
             const pdfBuffer = await errorPdfHtmlTemplate(error.message, options);
             response
                 .type('pdf')
