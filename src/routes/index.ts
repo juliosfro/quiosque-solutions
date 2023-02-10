@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import PdfController from '../controller/PdfController';
+import PdfController from '~/controller/PdfController';
 
 const router = Router();
 
