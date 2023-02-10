@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import path from 'path';
+import { resolve } from 'path';
 import { PDFOptions } from 'puppeteer';
 import { handlebarsCompileToHtml, registerPartialAndCompileToHtml } from '~/helpers/handlebars-helper';
 import { createPdfBuffer, createHtmlContentWithStyle, errorPdfHtmlTemplate } from '~/helpers/puppeteer-helper';
@@ -20,9 +20,9 @@ export default class PdfController {
                 total: `${total?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`,
             };
 
-            const templatePath = path.resolve(__dirname, '..', 'templates', 'layouts', 'relatorio-ordens-producao.hbs');
-            const partialHeaderPath = path.resolve(__dirname, '..', 'templates', 'layouts', 'header.hbs');
-            const templateStylePath = path.resolve(__dirname, '..', '..', 'public', 'css', 'styles.css');
+            const templatePath = resolve(__dirname, '..', 'templates', 'layouts', 'relatorio-ordens-producao.hbs');
+            const partialHeaderPath = resolve(__dirname, '..', 'templates', 'layouts', 'header.hbs');
+            const templateStylePath = resolve(__dirname, '..', '..', 'public', 'css', 'styles.css');
 
             const parsedHeader = await registerPartialAndCompileToHtml('header', partialHeaderPath);
             const parsedHeaderHtml = parsedHeader(produtos);
