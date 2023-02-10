@@ -6,7 +6,6 @@ import { createPdfBuffer, createHtmlContentWithStyle, errorPdfHtmlTemplate } fro
 
 import Budget from '../model/budget';
 
-
 export default class PdfController {
     public async create(request: Request, response: Response): Promise<any> {
         try {
