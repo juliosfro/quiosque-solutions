@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { resolve } from 'path';
 import { PDFOptions } from 'puppeteer';
 import { handlebarsCompileToHtml, registerPartialAndCompileToHtml } from '~/helpers/handlebars-helper';
-import { createPdfBuffer, createHtmlContentWithStyle, errorPdfHtmlTemplate } from '~/helpers/puppeteer-helper';
+import { createHtmlContentWithStyle, createPdfBuffer, errorPdfHtmlTemplate } from '~/helpers/puppeteer-helper';
 
 import Budget from '../model/budget';
 
@@ -12,7 +12,12 @@ export default class PdfController {
             const { body } = request;
             const { orders: products } = body;
 
-            const getTotal = (total: number, item: any) => total + (item.quantity * item.price);
+            type Item = {
+                quantity: number
+                price: number
+            }
+
+            const getTotal = (total: number, item: Item) => total + (item.quantity * item.price);
             const total = products?.reduce(getTotal, 0);
 
             const produtos: Budget = {
